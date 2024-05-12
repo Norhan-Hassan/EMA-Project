@@ -5,6 +5,6 @@ namespace EMA_Project.Services
 {
     public interface IPlaceService
     {
-        public List<GetALLPlacesDto> GetAllPlaces();
+        public List<PlaceDto> GetAllPlaces();
     }
 }

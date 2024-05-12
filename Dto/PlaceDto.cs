@@ -2,7 +2,7 @@
 
 namespace EMA_Project.Dto
 {
-    public class GetALLPlacesDto
+    public class PlaceDto
     {
         [Required]
         public string PlaceName { get; set; }

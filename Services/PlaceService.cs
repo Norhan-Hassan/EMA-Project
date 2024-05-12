@@ -19,15 +19,15 @@ namespace EMA_Project.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public List<GetALLPlacesDto> GetAllPlaces()
+        public List<PlaceDto> GetAllPlaces()
         {
             var places = _context.Place.ToList();
-            List<GetALLPlacesDto> PlaceDtos = new List<GetALLPlacesDto>();
+            List<PlaceDto> PlaceDtos = new List<PlaceDto>();
 
 
             foreach (var place in places)
             {
-                GetALLPlacesDto placeDto = new GetALLPlacesDto
+                PlaceDto placeDto = new PlaceDto
                 {
                     PlaceName = place.PlaceName,
                     Category = place.category,
