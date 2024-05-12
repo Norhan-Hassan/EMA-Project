@@ -21,7 +21,6 @@ namespace EMA_Project
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddHttpContextAccessor(); // Add this line to register IHttpContextAccessor
             builder.Services.AddScoped<IStudentService, StudentService>();
-            var app = builder.Build();
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll",
@@ -32,6 +31,8 @@ namespace EMA_Project
                                .AllowAnyHeader();
                     });
             });
+            var app = builder.Build();
+           
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
