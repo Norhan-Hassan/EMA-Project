@@ -23,6 +23,10 @@ namespace EMA_Project
             builder.Services.AddScoped<IStudentService, StudentService>();
             builder.Services.AddScoped<IPlaceService, PlaceService>();
             builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddLogging(builder =>
+            {
+                builder.AddConsole(); 
+            });
 
             builder.Services.AddCors(options =>
             {
