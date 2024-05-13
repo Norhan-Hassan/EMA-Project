@@ -1,4 +1,5 @@
-﻿using EMA_Project.Models;
+﻿using EMA_Project.Dto;
+using EMA_Project.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace EMA_Project.Services
@@ -24,17 +25,23 @@ namespace EMA_Project.Services
 
             return product?.Id ?? -1; // Return -1 if product is not found
         }
-        public List<Product> GetProductsForPlace(string placeName)
+        public List<ProductDto> GetProductsForPlace(string placeName)
         {
             int placeId = GetPlaceIdByName(placeName);
-            if(placeId != -1) {
-
+            if (placeId != -1)
+            {
                 var place = _context.Place
-                .Include(p => p.PlaceProducts)
-                .ThenInclude(pp => pp.Product)
-                .FirstOrDefault(p => p.Id == placeId);
+                    .Include(p => p.PlaceProducts)
+                    .ThenInclude(pp => pp.Product)
+                    .FirstOrDefault(p => p.Id == placeId);
 
-                var products = place.PlaceProducts.Select(pp => pp.Product).ToList();
+                var products = place.PlaceProducts.Select(pp => pp.Product)
+                    .Select(p => new ProductDto
+                    {
+                        ProductImage = p.ProductImage,
+                        ProductName = p.ProductName
+                    })
+                    .ToList();
                 return products;
             }
             else
@@ -42,16 +49,22 @@ namespace EMA_Project.Services
                 return null;
             }
         }
-        public List<Place> GetPlacesByProduct(string productName)
+        public List<PlaceDto> GetPlacesByProduct(string productName)
         {
-            int placeId= GetProductIdByName(productName);
-            if(placeId != -1 )
+            int productId = GetProductIdByName(productName);
+            if (productId != -1)
             {
                 var places = _context.Place
-                .Include(p => p.PlaceProducts)
-                .ThenInclude(pp => pp.Product)
-                .Where(p => p.PlaceProducts.Any(pp => pp.Product.ProductName.Contains(productName)))
-                .ToList();
+                    .Include(p => p.PlaceProducts)
+                    .ThenInclude(pp => pp.Product)
+                    .Where(p => p.PlaceProducts.Any(pp => pp.Product.ProductName.Contains(productName)))
+                    .Select(p => new PlaceDto
+                    {
+                        PlaceImage = p.PlaceImage,
+                        PlaceName = p.PlaceName,
+                        Category= p.category,
+                    })
+                    .ToList();
 
                 return places;
             }
