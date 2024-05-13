@@ -31,16 +31,39 @@ namespace EMA_Project.Services
                 {
                     PlaceName = place.PlaceName,
                     Category = place.category,
-
+                    PlaceImage = GetMediaUrl(place.PlaceImage)
                 };
                 PlaceDtos.Add(placeDto);
             }
             return PlaceDtos;
         }
-        //public List<> GetPlaceProducts( string placeName, string Category)
-        //{
+        
 
-        //}
+        public List<ProductDto> GetPlaceProducts(string placeName, string Category)
+        {
+           
+                var placeProducts = _context.Place
+                    .Where(p => p.PlaceName == placeName && p.category == Category)
+                    .SelectMany(p => p.PlaceProducts)
+                    .Select(pp => new ProductDto
+                    {
+                        
+                        ProductName = pp.Product.ProductName,
+                        ProductImage = GetMediaUrl(pp.Product.ProductImage)
+                    })
+                    .ToList();
+
+                return placeProducts;
+            
+
+        }
+        public string GetMediaUrl(string CityImage)
+        {
+
+            var request = _httpContextAccessor.HttpContext.Request;
+            var baseUrl = $"{request.Scheme}://{request.Host}";
+            return $"{baseUrl}/{CityImage}";
+        }
     }
 }
 

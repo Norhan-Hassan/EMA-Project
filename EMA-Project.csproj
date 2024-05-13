@@ -4,9 +4,24 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <InvariantGlobalization>true</InvariantGlobalization>
+    <InvariantGlobalization>false</InvariantGlobalization>
     <RootNamespace>EMA_Project</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\Images\cafe2\**" />
+    <Compile Remove="wwwroot\Images\rest1\**" />
+    <Compile Remove="wwwroot\Images\rest2\**" />
+    <Content Remove="wwwroot\Images\cafe2\**" />
+    <Content Remove="wwwroot\Images\rest1\**" />
+    <Content Remove="wwwroot\Images\rest2\**" />
+    <EmbeddedResource Remove="wwwroot\Images\cafe2\**" />
+    <EmbeddedResource Remove="wwwroot\Images\rest1\**" />
+    <EmbeddedResource Remove="wwwroot\Images\rest2\**" />
+    <None Remove="wwwroot\Images\cafe2\**" />
+    <None Remove="wwwroot\Images\rest1\**" />
+    <None Remove="wwwroot\Images\rest2\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4" />
@@ -17,5 +32,11 @@
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
+	<ItemGroup>
+    <Folder Include="wwwroot\Images\Al Khal Egyptian Restaurant\" />
+    <Folder Include="wwwroot\Images\Egyptian Night\" />
+    <Folder Include="wwwroot\Images\The Garden Cafe\" />
+    <Folder Include="wwwroot\Images\ZEN Cafe\" />
+    </ItemGroup>
 
 </Project>

@@ -8,6 +8,7 @@ namespace EMA_Project.Models
         public int Id { get; set; }
         public string PlaceName { get; set; }
         public string category { get; set; }
+        public string PlaceImage { get; set; }
         public double latitude { get; set; }
         public double longitude { get; set; }
         public ICollection<PlaceProduct> PlaceProducts { get; set; }

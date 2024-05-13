@@ -21,6 +21,8 @@ namespace EMA_Project
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddHttpContextAccessor(); // Add this line to register IHttpContextAccessor
             builder.Services.AddScoped<IStudentService, StudentService>();
+            builder.Services.AddScoped<IPlaceService, PlaceService>();
+
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll",

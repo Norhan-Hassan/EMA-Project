@@ -5,6 +5,10 @@ namespace EMA_Project.Services
 {
     public interface IPlaceService
     {
-        public List<PlaceDto> GetAllPlaces();
+         List<PlaceDto> GetAllPlaces();
+         List<ProductDto> GetPlaceProducts(string placeName, string Category);
+         string GetMediaUrl(string CityImage);
+
+
     }
 }

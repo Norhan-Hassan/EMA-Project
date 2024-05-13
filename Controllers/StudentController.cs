@@ -15,7 +15,7 @@ public class StudentController : ControllerBase
     public StudentController(IStudentService StudentService)
     {
         _StudentService = StudentService;
-        //_hostingEnvironment = hostingEnvironment;
+       
     }
 
     [HttpPost("signup")]

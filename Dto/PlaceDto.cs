@@ -9,5 +9,8 @@ namespace EMA_Project.Dto
         [Required]
         public string Category { get; set; }
 
+        [Required]
+        public string PlaceImage { get; set; }
+
     }
 }
