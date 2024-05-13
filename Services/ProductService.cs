@@ -7,9 +7,11 @@ namespace EMA_Project.Services
     public class ProductService : IProductService
     {
         private readonly ApplicationDbContext _context;
-        public ProductService(ApplicationDbContext context)
+        private readonly IPlaceService _placeService;
+        public ProductService(ApplicationDbContext context, IPlaceService placeService)
         {
             _context = context;
+            _placeService = placeService;
         }
         public int GetPlaceIdByName(string placeName)
         {
@@ -38,7 +40,7 @@ namespace EMA_Project.Services
                 var products = place.PlaceProducts.Select(pp => pp.Product)
                     .Select(p => new ProductDto
                     {
-                        ProductImage = p.ProductImage,
+                        ProductImage = _placeService.GetMediaUrl(p.ProductImage),
                         ProductName = p.ProductName
                     })
                     .ToList();
@@ -60,7 +62,7 @@ namespace EMA_Project.Services
                     .Where(p => p.PlaceProducts.Any(pp => pp.Product.ProductName.Contains(productName)))
                     .Select(p => new PlaceDto
                     {
-                        PlaceImage = p.PlaceImage,
+                        PlaceImage = _placeService.GetMediaUrl(p.PlaceImage),
                         PlaceName = p.PlaceName,
                         Category= p.category,
                     })
