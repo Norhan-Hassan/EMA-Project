@@ -41,12 +41,13 @@ namespace EMA_Project
             //{
                 app.UseSwagger();
                 app.UseSwaggerUI();
-           // }
+                app.UseStaticFiles();
+            // }
 
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
+            app.UseCors("AllowAll");
 
             app.MapControllers();
 

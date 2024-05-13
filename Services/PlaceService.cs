@@ -59,7 +59,6 @@ namespace EMA_Project.Services
         }
         public string GetMediaUrl(string CityImage)
         {
-
             var request = _httpContextAccessor.HttpContext.Request;
             var baseUrl = $"{request.Scheme}://{request.Host}";
             return $"{baseUrl}/{CityImage}";
