@@ -22,6 +22,7 @@ namespace EMA_Project
             builder.Services.AddHttpContextAccessor(); // Add this line to register IHttpContextAccessor
             builder.Services.AddScoped<IStudentService, StudentService>();
             builder.Services.AddScoped<IPlaceService, PlaceService>();
+            builder.Services.AddScoped<IProductService, ProductService>();
 
             builder.Services.AddCors(options =>
             {
