@@ -51,6 +51,20 @@ namespace EMA_Project.Services
                 return null;
             }
         }
+        public List<string> GetAllProducts()
+        {
+            var products = _context.Product.ToList();
+            List<string> productList = new List<string>();
+
+
+            foreach (var product in products)
+            {
+                string productName = product.ProductName;
+                productList.Add(productName);
+            }
+            return productList;
+        }
+
         public List<PlaceDto> GetPlacesByProduct(string productName)
         {
             int productId = GetProductIdByName(productName);

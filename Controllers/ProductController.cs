@@ -39,6 +39,18 @@ namespace EMA_Project.Controllers
 
             return Ok(places);
         }
+        [HttpGet("/GetAllProducts")]
+        public IActionResult GetAllProducts()
+        {
+            var products = _productService.GetAllProducts();
+            if (products.Count > 0)
+            {
+                return Ok(products);
+            }
+            else
+            { return BadRequest("No Products are Found"); }
+        }
+
     }
 }
 
