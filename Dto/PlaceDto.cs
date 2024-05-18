@@ -11,6 +11,8 @@ namespace EMA_Project.Dto
 
         [Required]
         public string PlaceImage { get; set; }
+        public double latitude { get; set; }
+        public double longitude { get; set; }
 
     }
 }

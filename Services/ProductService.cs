@@ -65,6 +65,8 @@ namespace EMA_Project.Services
                         PlaceImage = _placeService.GetMediaUrl(p.PlaceImage),
                         PlaceName = p.PlaceName,
                         Category= p.category,
+                        latitude=p.latitude,
+                        longitude=p.longitude,
                     })
                     .ToList();
 
