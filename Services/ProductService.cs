@@ -65,7 +65,7 @@ namespace EMA_Project.Services
             return productList;
         }
 
-        public List<PlaceDto> GetPlacesByProduct(string productName)
+        public List<PlaceWithLocationDto> GetPlacesByProduct(string productName)
         {
             int productId = GetProductIdByName(productName);
             if (productId != -1)
@@ -74,7 +74,7 @@ namespace EMA_Project.Services
                     .Include(p => p.PlaceProducts)
                     .ThenInclude(pp => pp.Product)
                     .Where(p => p.PlaceProducts.Any(pp => pp.Product.ProductName.Contains(productName)))
-                    .Select(p => new PlaceDto
+                    .Select(p => new PlaceWithLocationDto
                     {
                         PlaceImage = _placeService.GetMediaUrl(p.PlaceImage),
                         PlaceName = p.PlaceName,

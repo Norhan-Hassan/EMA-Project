@@ -7,7 +7,7 @@ namespace EMA_Project.Services
     {
         int GetPlaceIdByName(string placeName);
         List<ProductDto> GetProductsForPlace(string placeName);
-        List<PlaceDto> GetPlacesByProduct(string productName);
+        List<PlaceWithLocationDto> GetPlacesByProduct(string productName);
         List<string> GetAllProducts();
     }
 }
